@@ -1,0 +1,176 @@
+/* General Page Styling */
+body {
+    font-family: 'Poppins', sans-serif; /* Use Poppins font */
+    text-align: center; /* Center text */
+    background-color: #0d1117; /* Dark background color */
+    color: white; /* White text color */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Main Container */
+.container {
+    width: 90vw; /* 90% of viewport width */
+    max-width: 500px; /* Maximum width of 500px */
+    padding: 20px; /* Padding inside the container */
+    background: #161b22; /* Dark background color */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    text-align: center; /* Center text */
+    position: relative; /* Relative positioning */
+    z-index: 15; /* Ensure UI stays above other elements */
+}
+
+/* Fix game board layout */
+#game-board {
+    width: 320px; /* Fixed width */
+    height: 320px; /* Fixed height */
+    display: grid; /* Use grid layout */
+    grid-template-columns: repeat(3, 1fr); /* 3 columns of equal width */
+    grid-template-rows: repeat(3, 1fr); /* 3 rows of equal height */
+    gap: 5px; /* Gap between cells */
+    margin: 20px auto; /* Center the board with margin */
+    padding: 10px; /* Padding inside the board */
+    background: #30363d; /* Dark background color */
+    border-radius: 8px; /* Rounded corners */
+    position: relative; /* Relative positioning */
+    z-index: 12; /* Ensure it stays properly placed */
+}
+
+/* Ensure game board is fully transparent in camera mode */
+.camera-active #game-board {
+    background: none; /* Makes it fully transparent */
+}
+
+/* Fix cell alignment */
+.cell {
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: #0d1117; /* Dark background color */
+    border: 2px solid #58a6ff; /* Blue border */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    font-size: 3rem; /* Large font size */
+    font-weight: bold; /* Bold text */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    transition: transform 0.2s ease-in-out, background 0.2s; /* Smooth transitions */
+}
+
+/* Ensure cells are fully transparent in camera mode */
+.camera-active .cell {
+    background-color: rgba(0, 0, 0, 0); /* Fully transparent */
+}
+
+.cell:hover {
+    background-color: rgba(0, 0, 0, 0.2); /* Slight darkening effect */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Winning Move Highlight */
+.ai-move {
+    background-color: #ffcc00 !important; /* Yellow background */
+    animation: pulse 0.5s ease-in-out; /* Pulse animation */
+}
+
+/* Buttons */
+button {
+    background-color: #238636; /* Green background */
+    color: white; /* White text */
+    padding: 12px 18px; /* Padding inside the button */
+    font-size: 1rem; /* Font size */
+    border: none; /* No border */
+    border-radius: 6px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin: 10px; /* Margin around the button */
+    transition: background 0.3s; /* Smooth background transition */
+}
+
+button:hover {
+    background-color: #2ea043; /* Darker green on hover */
+}
+
+/* Dropdown Menu */
+select {
+    padding: 10px; /* Padding inside the select */
+    font-size: 1rem; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #58a6ff; /* Blue border */
+    background-color: #161b22; /* Dark background color */
+    color: white; /* White text */
+}
+
+/* Game Over Message */
+#game-over-message {
+    font-size: 1.5rem; /* Font size */
+    color: red; /* Red text color */
+    font-weight: bold; /* Bold text */
+    margin-top: 15px; /* Margin on top */
+}
+
+/* Ensure video covers full screen */
+#video {
+    position: fixed; /* Fixed positioning */
+    top: 0; /* Top of the viewport */
+    left: 0; /* Left of the viewport */
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    z-index: 1; /* Behind everything */
+    object-fit: cover; /* Cover the entire area */
+    transform: scaleX(-1); /* Flip the camera */
+    display: none; /* Hidden by default */
+}
+
+/* Ensure hand tracking overlay is properly scaled */
+#outputCanvas {
+    position: fixed; /* Fixed positioning */
+    top: 0; /* Top of the viewport */
+    left: 0; /* Left of the viewport */
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    z-index: 2; /* Above video, below board */
+    display: none; /* Hidden by default */
+}
+
+/* Full-Screen Camera Mode */
+.camera-active #video {
+    position: fixed; /* Fixed positioning */
+    top: 0; /* Top of the viewport */
+    left: 0; /* Left of the viewport */
+    width: 100vw; /* Full viewport width */
+    height: 100vh; /* Full viewport height */
+    object-fit: cover; /* Cover the entire area */
+    transform: scaleX(-1); /* Flip the camera */
+    z-index: 5; /* Above other elements */
+    display: block; /* Display in camera mode */
+}
+
+/* Ensure the game board is properly placed */
+.camera-active #game-board {
+    position: fixed; /* Fixed positioning */
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center the board */
+    width: 320px; /* Fixed width */
+    height: 320px; /* Fixed height */
+    z-index: 3; /* Above video and canvas */
+    background: none; /* Transparent */
+}
+
+/* Make game board cells transparent in camera mode */
+.camera-active .cell {
+    background: none; /* Transparent */
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { transform: scale(1); } /* Start at normal size */
+    50% { transform: scale(1.1); } /* Enlarge */
+    100% { transform: scale(1); } /* Return to normal size */
+}

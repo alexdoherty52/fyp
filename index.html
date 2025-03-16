@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe AI</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- MediaPipe Hands Library -->
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Tic-Tac-Toe AI</h1>
+        <p>Choose a difficulty level:</p>
+        <select id="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+            <option value="hard_computer_first">Hard (AI First)</option>
+        </select>
+
+        <div id="game-board"></div>
+
+        <p id="game-over-message"></p>
+
+        <button id="reset-button">Restart Game</button>
+        <button id="camera-mode-button">Toggle Camera Mode</button>
+
+        <video id="video" autoplay playsinline></video>
+        <canvas id="outputCanvas"></canvas>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
